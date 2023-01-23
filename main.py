@@ -17,7 +17,7 @@ def sub():
     print("1) Subtract money from needs?")
     print("2) Subtract money from wants?")
     print("3) Subtract money from savings?")
-    sub_choice = int(input("Which one do you want to add to(1,2 or 3):"))
+    sub_choice = int(input("Which one do you want to sub from(1,2 or 3):"))
 
     if sub_choice == 1:
         print("1) SUBTRACTING MONEY FROM NEEDS...")
@@ -147,23 +147,10 @@ def add():
 def income():
     # setting how much my needs are
     needs = 0.50
-    # needs_total = 0
 
-    # setting how much I want to be able to spend each paycheck
-    wants = 150
-
-    # savings amount
-    # savings = 0
     money = float(input("How much money are you getting in: "))
 
     print("\nIncoming money = ", money)
-
-    # cal needs
-    needs_total = money * needs
-    print("\nYour needs money is at $ ", needs_total)
-
-    # cal savings
-    savings = money - needs_total - wants
 
     # now we automate the needs subtraction to know exactly how much needs money I have
     # making variables for each different bill
@@ -187,45 +174,104 @@ def income():
     else:
         if needs_cycle == 1:
             print("Cycle 1...")
-            needs_total = needs_total - car_insurance - roth - music - gym - icloud
-            print("\nYour needs money is at $ ", round(needs_total, 2))
-            print("\nYour total spending money is: $", wants)
-            print("\nYour total saving $", round(savings, 2))
+            # If the money we get is not enough to cover the needs, needs will take precedence over wants/needs
+            if money <= 377:
+                needs_total = money - car_insurance - roth - music - gym - icloud
+                wants = 0
+                savings = 0
+                print("\nYour needs money is at $ ", round(needs_total, 2))
+                print("\nYour total spending money is: $", wants)
+                print("\nYour total saving $", round(savings, 2))
 
-            print("NOW ADDING TO FILE...")
-            # appends to file
-            file_opener = open("records.txt", "a")
-            file_opener.write('%-15s %15s %15s %15s\n' % ("CYCLE1-INCOME", round(needs_total, 2), wants,
-                                                          round(savings, 2)))
-            file_opener.close()
+                print("NOW ADDING TO FILE...")
+                # appends to file
+                file_opener = open("records.txt", "a")
+                file_opener.write('%-15s %15s %15s %15s\n' % ("CYCLE1-INCOME", round(needs_total, 2), wants,
+                                                              round(savings, 2)))
+                file_opener.close()
 
-            # print out to make sure it is correct
-            print("Output now after adding to file")
-            with open("records.txt", 'r') as text:
-                for line in text:
-                    print(line, end='')
-            file_opener.close()
+                # print out to make sure it is correct
+                print("Output now after adding to file")
+                with open("records.txt", 'r') as text:
+                    for line in text:
+                        print(line, end='')
+                file_opener.close()
+            else:
+                # cal savings
+                # setting how much I want to be able to spend each paycheck for wants
+                # cal needs
+                needs_total = money * needs
+                print("\nYour needs money is at $ ", needs_total)
+                wants = 150
+                savings = money - needs_total - wants
+                needs_total = needs_total - car_insurance - roth - music - gym - icloud
+                print("\nYour needs money is at $ ", round(needs_total, 2))
+                print("\nYour total spending money is: $", wants)
+                print("\nYour total saving $", round(savings, 2))
+
+                print("NOW ADDING TO FILE...")
+                # appends to file
+                file_opener = open("records.txt", "a")
+                file_opener.write('%-15s %15s %15s %15s\n' % ("CYCLE1-INCOME", round(needs_total, 2), wants,
+                                                              round(savings, 2)))
+                file_opener.close()
+
+                # print out to make sure it is correct
+                print("Output now after adding to file")
+                with open("records.txt", 'r') as text:
+                    for line in text:
+                        print(line, end='')
+                file_opener.close()
 
         elif needs_cycle == 2:
             print("Cycle 2...")
-            needs_total = needs_total - water_n_wifi
-            print("\nYour needs money is at $", round(needs_total, 2))
-            print("\nYour total spending money is: $", wants)
-            print("\nYour total saving $", round(savings, 2))
+            if money <= 332:
+                needs_total = money - water_n_wifi
+                wants = 0
+                savings = 0
+                print("\nYour needs money is at $", round(needs_total, 2))
+                print("\nYour total spending money is: $", wants)
+                print("\nYour total saving $", round(savings, 2))
 
-            print("NOW ADDING TO FILE...")
-            # appends to file
-            file_opener = open("records.txt", "a")
-            file_opener.write('%-15s %15s %15s %15s\n' % ("CYCLE2-INCOME", round(needs_total, 2), wants,
-                                                          round(savings, 2)))
-            file_opener.close()
+                print("NOW ADDING TO FILE...")
+                # appends to file
+                file_opener = open("records.txt", "a")
+                file_opener.write('%-15s %15s %15s %15s\n' % ("CYCLE2-INCOME", round(needs_total, 2), wants,
+                                                              round(savings, 2)))
+                file_opener.close()
 
-            # print out to make sure it is correct
-            print("Output now after adding to file")
-            with open("records.txt", 'r') as text:
-                for line in text:
-                    print(line, end='')
-            file_opener.close()
+                # print out to make sure it is correct
+                print("Output now after adding to file")
+                with open("records.txt", 'r') as text:
+                    for line in text:
+                        print(line, end='')
+                file_opener.close()
+            else:
+                # cal savings
+                # setting how much I want to be able to spend each paycheck for wants
+                # cal needs
+                needs_total = money * needs
+                print("\nYour needs money is at $ ", needs_total)
+                wants = 150
+                savings = money - needs_total - wants
+                needs_total = needs_total - car_insurance - roth - music - gym - icloud
+                print("\nYour needs money is at $ ", round(needs_total, 2))
+                print("\nYour total spending money is: $", wants)
+                print("\nYour total saving $", round(savings, 2))
+
+                print("NOW ADDING TO FILE...")
+                # appends to file
+                file_opener = open("records.txt", "a")
+                file_opener.write('%-15s %15s %15s %15s\n' % ("CYCLE1-INCOME", round(needs_total, 2), wants,
+                                                              round(savings, 2)))
+                file_opener.close()
+
+                # print out to make sure it is correct
+                print("Output now after adding to file")
+                with open("records.txt", 'r') as text:
+                    for line in text:
+                        print(line, end='')
+                file_opener.close()
 
 
 # This is income for BOCA paychecks only!
@@ -242,7 +288,7 @@ def boca_income():
     print("NOW ADDING TO FILE...")
     file_opener = open("records.txt", "a")
     file_opener.write('%-15s %15s %15s %15s\n' % ("BOCA-INCOME", round(needs_total, 2), round(wants_total, 2),
-                                                 round(saving_total, 2)))
+                                                  round(saving_total, 2)))
     file_opener.close()
 
     # printing out to make sure it is correct with no errors
